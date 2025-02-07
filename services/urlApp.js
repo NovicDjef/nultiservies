@@ -1,0 +1,1 @@
+export default baseImage = 'http://192.168.8.171:3000/images';
