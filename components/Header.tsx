@@ -39,41 +39,44 @@ export default function Header() {
     // router.push("/components/Notifications")
   }
   return (
-    <><StatusBar style='dark' /><View style={styles.container}>
+    <>
+      <StatusBar style='dark' />
+      <View style={styles.container}>
 
-      <View style={styles.UserData}>
-        {user !== undefined ? (
-          <Image
-            style={styles.userImage}
-            source={require('../assets/avatar/39.jpg')} />
-            // source={require(`../../assets/avatar/${user.image}.avif`)} />
-        ) : (
-          <Image
-            style={styles.userImage}
-            source={require('../assets/avatar/39.jpg')} />
-        )}
-        <View style={{ gap: 3, left: 2 }}>
-          <Text style={styles.welcomText}>Bienvenue !</Text>
-          <Text style={styles.userName}>Hello, {user == undefined ? "Votre nom" : "Novic" }
-          </Text>
+        <View style={styles.UserData}>
+          {user !== undefined ? (
+            <Image
+              style={styles.userImage}
+              source={require('../assets/avatar/39.jpg')} />
+              // source={require(`../../assets/avatar/${user.image}.avif`)} />
+          ) : (
+            <Image
+              style={styles.userImage}
+              source={require('../assets/avatar/39.jpg')} />
+          )}
+          <View style={{ gap: 3, left: 2 }}>
+            <Text style={styles.welcomText}>Bienvenue !</Text>
+            <Text style={styles.userName}>Hello, {user == undefined ? "Votre nom" : "Novic" }
+            </Text>
+          </View>
+        </View>
+        <View style={[styles.icons]}>
+          <TouchableOpacity onPress={navigateToNotifications}>
+            <View style={styles.Notifications}>
+              <Text style={{ color: COLORS.white }}>2</Text>
+            </View>
+            <Ionicons name='notifications-outline' size={28} />
+          </TouchableOpacity>
+          
         </View>
       </View>
-      <View style={[styles.icons]}>
-        <TouchableOpacity onPress={navigateToNotifications}>
-          <View style={styles.Notifications}>
-            <Text style={{ color: COLORS.white }}>2</Text>
-          </View>
-          <Ionicons name='notifications-outline' size={28} />
-        </TouchableOpacity>
-        
-      </View>
-    </View></>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 4,
+    paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
