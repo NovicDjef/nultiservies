@@ -81,7 +81,7 @@ export default function TechnicienList() {
             email: "marie.tremblay@example.com"
           },
           images: [
-            "https://modele-cv.com/wp-content/uploads/2024/11/profil-plombier-4.jpg",
+            "https://cpqmci.org/wp-content/uploads/2020/05/elec-3a.jpg",
             "https://example.com/electrician_work.jpg"
           ]
         },
@@ -119,7 +119,7 @@ export default function TechnicienList() {
             email: "alexandre.gagnon@example.com"
           },
           images: [
-            "https://example.com/alexandre_gagnon_profile.jpg",
+            "https://img.freepik.com/photos-gratuite/portrait-mecanicien-automobile-beau-professionnel-tenant-cles-face-automobile-capot-ouvert_342744-261.jpg",
             "https://example.com/mechanic_work.jpg"
           ]
         }
@@ -148,54 +148,20 @@ export default function TechnicienList() {
 
 const TechnicianCard = ({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.images }} style={styles.profileImage} />
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.profession}>{item.profession}</Text>
-      <View style={styles.ratingContainer}>
-        <AntDesign name="star" size={16} color="gold" />
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: item.images[0] }} style={styles.profileImage} />
+        <View style={styles.ratingContainer}>
+          <AntDesign name="star" size={16} color="gold" />
         <Text style={styles.rating}>{item.rating}</Text>
       </View>
-      <Text style={styles.experience}>{item.experience} d'expérience</Text>
-      <Text style={styles.location}>{item.location}</Text>
-    </View>
-  );
-const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      {/* Image de l'hôtel avec overlay */}
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: item.images[0] }} style={styles.image} />
-        {/* Rating & Favoris sur l'image */}
-        <View style={styles.overlay}>
-          <Text style={styles.rating}>⭐ {item.rating}</Text>
-          <Ionicons name="heart-outline" size={24} color="red" />
-        </View>
-        {/* Nom en bas de l'image */}
-        <View style={styles.nameOverlay}>
-          <Text style={styles.name}>{item.name}</Text>
-        </View>
       </View>
-  
-      {/* Adresse */}
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.profession}>{item.profession}</Text>
+      <Text style={styles.experience}>{item.experience} d'expérience</Text>
       <View style={styles.addressContainer}>
         <Ionicons name="location-outline" size={24} color="#1E90EF" />
         <Text style={styles.address}>{item.location}</Text>
       </View>
-     
-  
-      {/* Icônes des équipements */}
-      <View style={styles.iconsContainer}>
-        <Text style={styles.distance}>a 1,8 km</Text>
-        <Text style={styles.open}>ouvert</Text>
-        <MaterialCommunityIcons name="wifi" size={24} color="#FF4500" />
-        <MaterialCommunityIcons name="silverware-fork-knife" size={24} color="#FFD700" />
-      </View>
-       {/* Prix */}
-       <Text style={styles.cuisine}>
-     cuisine {item.cuisine}
-      </Text>
-      <Text style={styles.reserver}>
-     Reservez maintenant
-      </Text>
     </View>
   );
 
@@ -207,7 +173,7 @@ const renderItem = ({ item }) => (
     },
     card: {
       backgroundColor: "#fff",
-      padding: 1,
+      padding: 10,
       borderRadius: 10,
       shadowColor: "#000",
       shadowOpacity: 0.1,
@@ -224,7 +190,32 @@ const renderItem = ({ item }) => (
     name: {
       fontSize: 18,
       fontWeight: "bold",
-      marginTop: 0,
+      // marginTop: 0,
+    },
+    profession: {
+      textAlign: "center",
+      marginTop: -10,
+      fontSize: 16,
+    },
+    ratingContainer: {
+      position: "absolute",
+      bottom: 5,
+      flexDirection: "row",
+      backgroundColor: "rgba(0,0,0,0.5)",
+      paddingVertical: 0,
+      borderRadius: 5,
+    },
+    rating: {
+      marginTop: 20,
+      fontSize: 14,
+      color: "gray",
+      marginLeft: 5,
+    },
+    experience: {
+      textAlign: "center",
+      fontSize: 14,
+      color: "gray",
+      marginTop: 5,
     },
     addressContainer: {
       flexDirection: "row",
@@ -233,11 +224,10 @@ const renderItem = ({ item }) => (
     },
     address: {
       fontSize: 14,
-      color: "gray",
+      color: "#1E90EF",
       margin: 5,
     },
    
-  
     heart: {
       top: 10,
       // right: 10,
@@ -245,7 +235,9 @@ const renderItem = ({ item }) => (
     },
   
     imageContainer: {
-      position: "relative",
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: 50,
     },
   
     overlay: {
@@ -299,9 +291,9 @@ const renderItem = ({ item }) => (
       textAlign: "center",
     },
     profileImage: {
-      width: 80,
-      height: 80,
-      borderRadius: 25,
+      width: 90,
+      height: 90,
+      borderRadius: 50,
     },
     
     cuisine: {

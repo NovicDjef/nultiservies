@@ -6,6 +6,7 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import HotelList from '../Hotels/HotelList';
 import RestaurantList from '../Restaurants/RestaurantList';
 import TechnicienList from '../Techniciens/TechnicienList';
+import SearchBar from '../../components/SeacheBar';
 // import api from '../../services/api';
 
 const UserDashboard = () => {
@@ -36,6 +37,7 @@ const UserDashboard = () => {
   return (
     <ScrollView style={styles.container}>
       <Header />
+      <SearchBar />
       <Section styless href={{ pathname: `/repas/PlatsList`,}} label={"Hotel Disponibles"}/>
       <HotelList />
      
