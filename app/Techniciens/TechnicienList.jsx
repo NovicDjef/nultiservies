@@ -6,7 +6,7 @@ import { router, useRouter } from 'expo-router'
 
 export default function TechnicienList() {
 
-    
+
     const ListTechnicians = [
         {
           id: 1,
@@ -140,7 +140,8 @@ export default function TechnicienList() {
                     renderItem={TechnicianCard}
                 />
             </View>
-                 
+           
+   
               </ScrollView>
     </View>
   )
@@ -150,7 +151,7 @@ const TechnicianCard = ({ item }) => (
     <TouchableOpacity style={styles.card} 
     onPress={() => router.push({ 
       pathname: '/Techniciens/DetailTechnicien', 
-      params: { item: JSON.stringify(item) } })}>
+      params: { item: JSON.stringify(item)}})}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.images[0] }} style={styles.profileImage} />
         <View style={styles.ratingContainer}>
