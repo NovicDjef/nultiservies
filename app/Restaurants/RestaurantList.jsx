@@ -1,6 +1,7 @@
-import { View, Text, ScrollView, Image, FlatList, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import {MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
+import { router, useRouter } from 'expo-router'
 
 export default function RestaurantList() {
 
@@ -114,7 +115,10 @@ export default function RestaurantList() {
 }
 
 const renderItem = ({ item }) => (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card}
+      onPress={() => router.push({
+        pathname: '/Restaurants/DetailRestaurants',
+        params: { item: JSON.stringify(item)} })}>
       {/* Image de l'hôtel avec overlay */}
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.images[0] }} style={styles.image} />
@@ -150,7 +154,7 @@ const renderItem = ({ item }) => (
       <Text style={styles.reserver}>
      Reservez maintenant
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 
   const styles = StyleSheet.create({

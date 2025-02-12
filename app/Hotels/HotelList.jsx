@@ -1,6 +1,7 @@
-import { View, Text, ScrollView, Image, FlatList, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import {MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
+import { router, useRouter } from 'expo-router'
 
 export default function HotelList() {
 
@@ -91,7 +92,7 @@ export default function HotelList() {
        <ScrollView 
             horizontal={true}  // Activer le défilement horizontal
             contentContainerStyle={[styles.containerHotel]}>
-            <View>
+            <View style={styles.containerHotel}>
                 <FlatList
                     data={Listhotels}
                     horizontal={true}
@@ -106,7 +107,11 @@ export default function HotelList() {
 }
 
 const renderItem = ({ item }) => (
-    <View style={styles.card}>
+    <TouchableOpacity
+      onPress={() => router.push({ 
+        pathname: '/Hotels/DetailHotel', 
+        params: { item: JSON.stringify(item) }})}
+      style={styles.card}>
       {/* Image de l'hôtel avec overlay */}
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.images[0] }} style={styles.image} />
@@ -140,7 +145,7 @@ const renderItem = ({ item }) => (
        <Text style={styles.price}>
        A partir {item.from} {item.currency} / nuit
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 
   const styles = StyleSheet.create({

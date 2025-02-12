@@ -1,8 +1,8 @@
-import { View, Text, ScrollView, Image, FlatList, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import {MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'; // Pour afficher l'icône d'étoile
-
+import { router, useRouter } from 'expo-router'
 
 export default function TechnicienList() {
 
@@ -147,7 +147,10 @@ export default function TechnicienList() {
 }
 
 const TechnicianCard = ({ item }) => (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} 
+    onPress={() => router.push({ 
+      pathname: '/Techniciens/DetailTechnicien', 
+      params: { item: JSON.stringify(item) } })}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.images[0] }} style={styles.profileImage} />
         <View style={styles.ratingContainer}>
@@ -162,7 +165,7 @@ const TechnicianCard = ({ item }) => (
         <Ionicons name="location-outline" size={24} color="#1E90EF" />
         <Text style={styles.address}>{item.location}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   const styles = StyleSheet.create({

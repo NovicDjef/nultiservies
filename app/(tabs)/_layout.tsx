@@ -12,6 +12,7 @@ const _layout = () => {
           <Stack.Screen options={{ headerShown: false }} name="index" />
           <Stack.Screen options={{ headerShown: false }} name="RegisterScreen" />
           <Stack.Screen options={{ headerShown: false }} name="LoginScreen" />
+          <Stack.Screen options={{ headerShown: false }} name="DetailHotel" />
         </Stack>
       </Provider>
     );
